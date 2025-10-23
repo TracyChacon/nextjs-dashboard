@@ -1,7 +1,7 @@
 ## App Router / NextJS Dashboard
 This is the second of three tutorials I'm taking to learn the NextJs framework. 
 
-1. Reaact Foundations ✅ 
+1. React Foundations ✅ 
 2. App Router 
 3. SEO 
 
