@@ -1,4 +1,6 @@
 import SideNav from '@/app/ui/dashboard/sidenav'
+// ppr
+export const cacheComponets = true
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
