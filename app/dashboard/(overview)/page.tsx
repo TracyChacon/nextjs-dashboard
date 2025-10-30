@@ -6,9 +6,7 @@ import { fetchCardData } from '@/app/lib/data'
 import { Suspense } from 'react'
 import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton } from '@/app/ui/skeletons'
 
-
 export default async function Page() {
-
 
     return (
         <main className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>

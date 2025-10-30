@@ -2,7 +2,8 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   /* config options here */
-  cacheComponents: true,
+  // ppr 
+  // cacheComponents: true,
 }
 
 export default nextConfig
