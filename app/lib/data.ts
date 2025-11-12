@@ -10,9 +10,7 @@ import {
 import { formatCurrency } from './utils'
 
 const sql = postgres(process.env.DATABASE_URL!, { 
-  ssl: { rejectUnauthorized: false },
-  idle_timeout: 20,
-  max_lifetime: 60 * 5, 
+  idle_timeout: 5,
 })
 
 export async function fetchRevenue() {

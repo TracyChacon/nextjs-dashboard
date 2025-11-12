@@ -37,5 +37,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
+# Ignore Gemni scratchpad/logs
 GEMINI.md
