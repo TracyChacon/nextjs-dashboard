@@ -28,6 +28,7 @@ yarn-error.log*
 .env*.local
 .env
 .env.example
+.db.env
 
 # vercel
 .vercel
@@ -35,3 +36,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+GEMINI.md

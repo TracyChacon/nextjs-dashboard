@@ -1,0 +1,50 @@
+
+services:
+  # 1. PostgreSQL Database Service
+  db:
+    image: postgres:16-alpine
+    container_name: nextjs_dashboard_postgres_db
+    restart: always
+    # Loads environment variables (like DB_PASSWORD) from your .env file
+    env_file:
+      - ./.db.env 
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      # Maps container port 5432 to host port 5432 for local access
+      - "5432:5432"
+    volumes:
+      # Ensures data persists even if the container is removed
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Next.js Application Service
+  web:
+    # Tells Docker Compose to build the image using the local Dockerfile
+    build: . 
+    # Tags the resulting image with the name you chose
+    image: nextjs-dashboard:latest
+    container_name: nextjs_dashboard_web
+    restart: always
+    ports:
+      # Maps container port 3000 to host port 3000 to access the app
+      - "3000:3000"
+    environment:
+      # CRUCIAL: Uses the service name 'db' as the host for internal network communication
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+      # Load your Gemini API key from the host environment if needed during runtime
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      NODE_ENV: development
+      # CRITICAL for Next.js hot-reloading in some Docker setupss
+      WATCHPACK_POLLING: true
+    # Ensure the DB starts successfully before attempting to start the web app
+    depends_on:
+      - db
+    # Optional: Use volumes for live development (uncomment to enable hot-reloading)
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules # Prevents host node_modules from overwriting container node_modules
+
+volumes:
+  postgres_data:
