@@ -9,6 +9,9 @@ WORKDIR /usr/src/app
 # Copy dependency files
 COPY package.json pnpm-lock.yaml ./
 
+# a11y pluging
+RUN pnpm i eslint-plugin-jsx-a11y
+
 # Install all dependencies, including the locally installed Gemini CLI
 RUN pnpm install
 
