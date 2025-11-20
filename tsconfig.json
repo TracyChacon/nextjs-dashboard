@@ -36,7 +36,11 @@
     ".next/types/**/*.ts",
     "app/lib/placeholder-data.ts",
     "scripts/seed.js",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "check_db.js",
+    "eslint-parser.js",
+    "eslint.config.js",
+    "postcss.config.js"
   ],
   "exclude": [
     "node_modules"

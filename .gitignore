@@ -39,3 +39,6 @@ next-env.d.ts
 
 # Ignore Gemni scratchpad/logs
 GEMINI.md
+
+# Ignore the local pnpm store index (if created  inside the project)
+.pnpm-store/

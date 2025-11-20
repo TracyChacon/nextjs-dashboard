@@ -44,7 +44,6 @@ services:
     # Optional: Use volumes for live development (uncomment to enable hot-reloading)
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules # Prevents host node_modules from overwriting container node_modules
 
 volumes:
   postgres_data:

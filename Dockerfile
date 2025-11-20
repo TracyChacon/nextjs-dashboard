@@ -1,5 +1,5 @@
 # --- STAGE 1: Dependency Installation & Local CLI Setup (Build Stage) ---
-FROM node:24-slim AS base 
+FROM node:22-slim AS base 
 # Install pnpm globally (required for running pnpm commands)
 RUN npm install -g pnpm
 
@@ -9,6 +9,9 @@ WORKDIR /usr/src/app
 # Copy dependency files
 COPY package.json pnpm-lock.yaml ./
 
+# Clean node_modules to prevent issues with volume mounts
+RUN rm -rf node_modules
+
 # a11y pluging
 RUN pnpm i eslint-plugin-jsx-a11y
 
@@ -16,10 +19,10 @@ RUN pnpm i eslint-plugin-jsx-a11y
 RUN pnpm install
 
 # Test the local CLI installation (optional, good for verification)
-RUN pnpm exec gemini --version
+# RUN pnpm exec gemini --version
 
 # --- STAGE 2: Final Image (Production Stage) ---
-FROM node:24-slim AS final 
+FROM node:22-slim AS final 
 
 # Install pnpm globally again in the final image
 RUN npm install -g pnpm
