@@ -13,7 +13,9 @@ COPY package.json pnpm-lock.yaml ./
 RUN rm -rf node_modules
 
 # a11y pluging
+RUN pnpm add -D eslint eslint-config-next
 RUN pnpm i eslint-plugin-jsx-a11y
+
 
 # Install all dependencies, including the locally installed Gemini CLI
 RUN pnpm install
